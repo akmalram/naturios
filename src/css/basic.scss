@@ -8,7 +8,12 @@ img {
     height: auto;
 }
 
-// that is a comment
+.row {
+    @include row-flex();
+}
+.column {
+    @include col();
+}
    
 *, *::after, *::before {
     padding: 0;

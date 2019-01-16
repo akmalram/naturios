@@ -31,7 +31,7 @@ gulp.task('browser-sync', function() {
         server: {
             baseDir: "./build/"
         },
-        tunnel: true
+        // tunnel: true
     });
 });
 
