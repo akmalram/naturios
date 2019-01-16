@@ -1,0 +1,447 @@
+@import "./vars.scss";
+@import "./smart-grid.scss";
+
+section {
+    padding: 100px 0;
+}
+
+.row {
+    @include row-flex();
+}
+.column {
+    @include col();
+}
+
+.about {
+
+    .heading-tertiary {
+        margin-bottom: 2rem;
+    }
+
+    .column {
+        @include size(12);
+    }
+}
+.gallery {
+    position: relative;
+
+    &__photo {
+        position: absolute;
+        width: 55%;
+        box-shadow: 0 1rem 2rem rgba($color: #000000, $alpha: 0.3);
+        z-index: 10;
+        cursor: pointer;
+        transition: all .3s;
+        outline-offset: 1.5rem;
+
+        &_1 {
+            left: 0;
+            top: 0;
+        }
+
+        &_2 {
+            right: 0;
+            top: 4rem;
+        }
+        &_3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2rem 2rem rgba($color: #000000, $alpha: 0.4);        
+            z-index: 20;
+            outline: 1.5rem solid $color-light-green;
+        }
+    }
+
+    &:hover &__photo:not(:hover) {
+        transform: scale(.9);
+    }
+}
+.features {
+    padding: 25rem 0;
+    background-image:linear-gradient(to right, rgba($color:$color-light-green, $alpha: .9), rgba($color:$color-dark-green, $alpha: 0.9)) , url(http://eskipaper.com/images/landscape-road-1.jpg);
+    background-size: cover;
+    clip-path: polygon(0 15%, 100% 0, 100% 85%, 0 100%);
+    justify-content: space-evenly;
+
+
+    &__feature {
+        @include size(6);
+        background: rgba($color:#f7f7f7, $alpha: 1);
+        border-radius: 5px;
+        text-align: center;
+        padding: 2rem;
+        box-shadow: 0 1.5rem 3rem rgba($color: #000000, $alpha: 0.3);
+        cursor: pointer;
+        transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-basis: 235px;
+
+        &:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 2rem 3rem rgba($color: #000000, $alpha: 0.4);
+        }
+
+        .heading-quaternary {
+            margin-bottom: 1.5rem;
+        }
+
+
+        &__icon {
+            display: inline-block;
+            font-size: 8rem;
+            font-weight: 700;
+            background-image: linear-gradient(to right, $color-light-green, $color-dark-green);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        &__desc {
+            margin-top: auto;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+    }
+}
+
+.lasts {
+    .row {
+        justify-content: space-evenly;
+    }
+}
+.card {
+    @include col();
+    @include size(7);
+    perspective: 100rem;
+    position: relative;
+    height: 50rem;
+    flex-basis: 300px;
+    
+    
+    
+    &__side {
+        transition: all .5s ease-in-out;
+        font-size: 2rem;
+        color: #000000;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        backface-visibility: hidden;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 0 1.5rem 5rem rgba($color: #000000, $alpha: 0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        &--front {
+            background-color: white;
+        }
+        
+        &--back {
+            transform: rotateY(180deg);
+            color: #fff;
+
+            &-1 {
+                background-image: linear-gradient(to right bottom, $color-light-orange, $color-dark-orange);
+            }
+            &-2 {
+                background-image: linear-gradient(to right bottom, $color-light-green, $color-dark-green);                    
+            }
+            &-3 {
+                background-image: linear-gradient(to right bottom, $color-light-blue, $color-violet);                    
+            }
+        }
+    }
+    &:hover &__side--front {
+        transform: rotateY(-180deg);
+    }
+    &:hover &__side--back {
+        transform: rotateY(0deg);
+    }
+
+    &__picture {
+        height: 23rem;
+        background-size: cover;
+        background-blend-mode: screen;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+        &-1 {
+            background-image: linear-gradient(to right bottom, $color-light-orange, $color-dark-orange), url(http://www.carpricenews.com/wp-content/uploads/Lamborghini-Aventador-SV-2016-Rear-View.jpg);
+        }
+        &-2 {
+            background-image: linear-gradient(to right bottom, $color-light-green, $color-dark-green), url(https://im0-tub-ru.yandex.net/i?id=78303e8a0a82a6de67230a8406467e35&n=13);
+        }
+        &-3 {
+            background-image: linear-gradient(to right bottom, $color-light-blue, $color-violet), url(https://www.wallpaperup.com/uploads/wallpapers/2016/11/07/1034374/05c783cafe5f6e753dc1addc18c1c8ee-375.jpg);
+        }
+
+        
+        
+    }
+    &__heading {
+        position: absolute;
+        text-align: right;
+        text-transform: uppercase;
+        color: white;
+        top: 14rem;
+        right: 1rem;
+        font-weight: lighter;
+        font-size: 2.1rem;
+
+        &-span {
+            padding: 1.5rem 1rem;
+            box-decoration-break: clone;
+            &-1 {
+                background-image: linear-gradient(to right bottom, rgba($color: $color-light-orange, $alpha: .80), rgba($color: $color-dark-orange, $alpha: .80));
+            }
+            &-2 {
+                background-image: linear-gradient(to right bottom, rgba($color: $color-light-green, $alpha: .80), rgba($color: $color-dark-green, $alpha: .80));
+            }
+            
+            &-3 {
+                background-image: linear-gradient(to right bottom, rgba($color: $color-light-blue, $alpha: .80), rgba($color: $color-violet, $alpha: .80));
+            }
+        }
+    }
+
+    &__details {
+        margin-top: auto;
+        ul {
+            list-style: none;
+            text-align: center;
+            color: $color-dark-grey;
+            padding-bottom: 1rem; 
+            width: 80%;
+            margin: 0 auto;
+
+            li {
+                padding: 1rem;
+                
+                &:not(:last-of-type) {
+                    border-bottom: 1px solid #eeee;
+                }
+            }
+
+        }
+    }
+
+    &__cta {
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        &__price {
+            font-size: 3rem;
+            font-style: italic;
+            font-weight: 100;
+            margin-bottom: 2rem;
+        }
+    }
+}
+
+.stories {
+    position: relative;
+    overflow: hidden;  
+}
+
+.story {
+    width: 70%;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 0 1rem 2rem rgba($color: #000000, $alpha: .1);
+    margin: 0 auto;
+    padding: 5rem;
+    padding-left: 7rem;
+    transform: skewX(-12deg);
+    margin-bottom: 12rem;
+    min-height: 15rem;
+    &__picture {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        background-color: black;
+        shape-outside: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-2rem) skewX(12deg);
+        position: relative;
+    }
+    h3 {
+        transform: skewX(12deg);
+    }
+    p {
+        font-size: 1.6rem;
+        transform: skewX(12deg);
+    }
+    &__img {
+        max-width: 1000%;
+        height: 130%;
+        width: auto;
+        transform: translate(-40%, -10%);
+        transition: transform .3s ease-in-out, filter .3s ease-in-out;
+    }
+    &__caption {
+        font-size: 1.7rem;
+        color: #f7f7f7;
+        font-weight: bold;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        text-align: center;
+        color: #fff;
+        font-size: 1.7rem;
+        opacity: 0;
+        transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+    }
+    &:hover &__caption {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+    &:hover &__img {
+        transform: translate(-40%, -10%) scale(.85);
+        filter: blur(3px) brightness(80%);
+    }
+}
+.bg_video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: -1;
+    opacity: .3;
+    
+    &__content {
+        height: 100%;
+        object-fit: cover;
+        
+    }
+}
+
+.booking {
+    padding: 15rem;
+    background: linear-gradient(to right bottom, $color-light-green, $color-dark-green);
+}
+
+.book {
+    height: 50rem;
+    border-radius: 3px;
+    padding: 5rem;
+
+    background-image: linear-gradient(105deg, rgba(#ffffff, .9) 0%, rgba(#ffffff, .9) 50%,transparent 50%), url(../imgs/nat-bg.jpg);
+    background-size: cover;
+    background-position: center center;
+
+    .heading-secondary {
+        margin-bottom: 5rem;
+    }
+
+    &__form {
+        width: 50%;
+    }
+}
+
+.form {
+
+    &__group:not(:last-of-type) {
+        margin-bottom: 2rem;
+    }
+
+    &__input {
+        font-size: 1.6rem;
+        padding: 1.5rem 2rem;
+        border: none;
+        font-family: inherit;
+        border-radius: 2px;
+        border-bottom: 3px solid transparent;
+        display: block;
+        width: 80%;
+        transition: border-color .3s ease-in-out;
+        
+        &::-webkit-input-placeholder {
+            color: #999;
+        }
+        &:focus {
+            outline: none;
+            box-shadow: 0 .5rem 2rem rgba($color: #000000, $alpha: 0.1);
+            border-bottom-color: $color-dark-green;
+        }
+        &:focus:invalid {
+            border-bottom-color: $color-dark-orange;
+        }
+    }
+    
+    
+    &__label {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin: .7rem 1.7rem;
+        display: block;
+        transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+        transform: translateY(0rem);
+        z-index: -1;
+    }
+
+    &__input:placeholder-shown + &__label {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-3rem);
+    }
+
+    &__radio-group {
+        width: 45%;
+        display: inline-block;
+    }
+    &__radio {
+        display: none;
+    }
+    // button on off
+    &__radio:checked + &__radio-label  &__radio-button::after {
+        opacity: 1;
+    }
+
+    &__radio-label {
+        font-size: 1.3rem;
+        cursor: pointer;
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+    }
+    &__radio-button {
+        width: 3rem;
+        height: 3rem;
+        border: .5rem solid $color-light-green;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 1rem;
+        box-sizing: border-box;
+        position: relative;
+
+        &::after {
+            content: "";
+            display: inline-block;
+            width: 75%;
+            height: 75%;
+            background-color: $color-light-green;
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity .5s ease;
+
+        }
+    }
+}
