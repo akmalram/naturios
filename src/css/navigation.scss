@@ -5,13 +5,29 @@
     justify-content: center;
     align-items: center;
 
-    width: 100%;
+    width: 0%;
     height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
 
     z-index: 1500;
+    transition: width  .7s cubic-bezier(.64,1.48,.8,1.44);
+
+
+    &.active {
+        width: 100%;
+
+        .navigation__background {
+            transform: scale(80) !important;
+        }
+
+        .navigation__item {
+            transform: translateX(0) !important;
+            opacity: 1 !important;
+        }
+        
+    }
 
 
     &__button {
@@ -20,6 +36,7 @@
 
         border-radius: 50%;
         background-color: white;
+        cursor: pointer;
 
         position: fixed;
         top: 6rem;
@@ -29,6 +46,41 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
+        &_line {
+            position: relative;
+            &,
+            &::before,
+            &::after {
+                width: 3rem;
+                height: 2px;
+                display: block;
+                background: #333333;
+                transition: all .3s ease-in-out;
+            }
+
+            &::before,
+            &::after {
+                content: "";
+                position: absolute;
+                left: 0;
+            }
+            &::before {
+                top: -1rem;
+            } 
+            &::after {
+                top: 1rem;
+            }
+        }
+    }
+    &.active &__button_line {
+        background: transparent;
+        &::before {
+            transform: rotate(135deg) translate(8px, -9px);
+        }
+        &::after {
+            transform: rotate(-135deg) translate(5px, 6px);
+        }
     }
 
     &__background {
@@ -43,7 +95,8 @@
         right: 6.5rem;
         z-index: 1000;
 
-        transform: scale(80);
+        transform: scale(0);
+        transition: transform .5s cubic-bezier(.91,.2,.51,.68);
     }
 
     &__list {
@@ -56,6 +109,9 @@
         &:not(:last-of-type) {
             margin-bottom: 2rem;
         }
+        opacity: 0;
+        transition: opacity  .4s cubic-bezier(.13,1.49,.55,1.26);
+        transition-delay: .2s;
     }
 
     &__link {
